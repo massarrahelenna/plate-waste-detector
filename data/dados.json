@@ -1,9 +1,30 @@
-[
-  { "nome": "Arroz", "Retornos": 8 },
-  { "nome": "Vegetais", "Retornos": 7 },
-  { "nome": "Carne", "Retornos": 5 },
-  { "nome": "Peixe", "Retornos": 2 },
-  { "nome": "tomate", "Retornos": 1 },
-  { "nome": "Macarrão", "Retornos": 2 },
-  { "nome": "Batata", "Retornos": 1 }
-]
+{
+  "alimentos": {
+    "arroz": {
+      "nome_display": "Arroz",
+      "densidade_g_por_pixel": 0.08,
+      "unidade": "g",
+      "observacao": "Fator calibrado para porção padrão de bandeja universitária (640x640px)"
+    },
+    "feijao": {
+      "nome_display": "Feijão",
+      "densidade_g_por_pixel": 0.09,
+      "unidade": "g",
+      "observacao": "Inclui caldo"
+    },
+    "carne": {
+      "nome_display": "Carne",
+      "densidade_g_por_pixel": 0.12,
+      "unidade": "g",
+      "observacao": "Média entre carne bovina e frango"
+    },
+    "salada": {
+      "nome_display": "Salada",
+      "densidade_g_por_pixel": 0.04,
+      "unidade": "g",
+      "observacao": "Folhas e legumes crus"
+    }
+  },
+  "versao": "1.0",
+  "observacao_geral": "Fatores experimentais — recalibrar com balança de precisão para maior acurácia"
+}
