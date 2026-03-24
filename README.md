@@ -1,107 +1,192 @@
-# 🍽️ Sistema Inteligente de Análise de Desperdício Alimentar via Visão Computacional
+<div align="center">
 
-## 📌 Visão Geral
+# 🍽️ Plate Waste Detector
 
-Este projeto propõe o desenvolvimento de um **sistema inteligente baseado em Visão Computacional e Deep Learning** para identificar, segmentar e estimar o desperdício alimentar em pratos ou bandejas após o consumo.
+### AI-powered food waste analysis through Computer Vision
 
-A solução é voltada especialmente para **ambientes de alimentação coletiva**, como restaurantes universitários e refeitórios corporativos, onde atualmente o controle de sobras é feito de forma manual e pouco informativa.
+*Developed at a Hackathon · Computer Vision × Sustainability*
 
-Utilizando **segmentação de instância com YOLO**, o sistema fornece dados granulares sobre **quais alimentos são mais desperdiçados**, auxiliando gestores na tomada de decisões para redução do desperdício na fonte.
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-00FFFF?style=flat-square)](https://ultralytics.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
----
-
-## 🎯 Objetivos
-
-### Objetivo Geral
-
-Desenvolver um sistema de software capaz de **identificar, segmentar e estimar o volume/peso de resíduos alimentares** a partir de imagens ou vídeo em tempo real.
-
-### Objetivos Específicos
-
-* Criar ou adaptar um dataset de imagens de alimentos em estado de sobra (pós-consumo).
-* Treinar um modelo de **Segmentação de Instância** utilizando YOLO (v8-seg).
-* Estimar o peso/volume de resíduos com base na área segmentada em pixels.
-* Disponibilizar métricas de desperdício para apoio à tomada de decisão.
+</div>
 
 ---
 
-## 🧠 Tecnologias Utilizadas
+## 📌 Overview
 
-* **Linguagem:** Python 3.10+
-* **Deep Learning:** PyTorch
-* **Visão Computacional:** OpenCV
-* **Modelo:** YOLOv5-seg (Ultralytics)
-* **Anotação de Dados:** Roboflow / CVAT
-* **Backend (opcional):** FastAPI
-* **Ambiente:** Linux (Ubuntu / WSL) com suporte a CUDA
+**Plate Waste Detector** is an intelligent system built with **Computer Vision and Deep Learning** to identify, segment, and estimate food waste on plates or trays after consumption.
 
-## 🔬 Metodologia
+Designed for **collective dining environments** — such as university cafeterias and corporate canteens — this solution replaces manual, imprecise food waste tracking with granular, automated data. Using **instance segmentation with YOLOv8-seg**, the system reveals *which foods are most often wasted*, empowering managers to make data-driven decisions and reduce waste at the source.
 
-### 1️⃣ Coleta e Pré-processamento de Dados
+> 🏆 Built during a hackathon, focused on applying AI to real-world sustainability challenges.
 
-* Coleta de imagens reais de pratos/bandejas após o consumo.
-* Aplicação de **Data Augmentation** (rotação, brilho, contraste).
+---
 
-### 2️⃣ Treinamento do Modelo
+## 🎯 Objectives
 
-* Uso de **Transfer Learning** com pesos pré-treinados do YOLOv8-seg.
-* Fine-tuning para classes específicas de alimentos:
+**General Goal**
+Develop a software system capable of **identifying, segmenting, and estimating the volume/weight of food residues** from images or real-time video.
 
-  * Arroz
-  * Feijão
-  * Carne
-  * Salada
+**Specific Goals**
+- Collect and prepare a dataset of post-consumption food images (leftover state).
+- Train an **Instance Segmentation** model using YOLOv8-seg.
+- Estimate residue weight/volume based on the segmented pixel area.
+- Deliver actionable waste metrics to support operational decision-making.
 
-### 3️⃣ Estimativa de Desperdício
+---
 
-* Conversão da área segmentada em pixels para peso estimado:
+## 🗂️ Project Structure
 
 ```
-Peso (g) = Área em Pixels × Fator de Densidade (g/pixel)
+plate-waste-detector/
+├── assets/             # Performance charts and visual demos
+├── data/               # Business rules and metadata (dados.json)
+├── dataset/            # Structured dataset (Images + Labels)
+├── models/             # Trained model weights (best.pt)
+├── scripts/            # Automation scripts (dataset download)
+├── src/                # Application source code
+│   ├── app.py          # Streamlit interface & Dashboard
+│   └── detector.py     # Inference engine and data analysis logic
+├── .env                # Environment variables (API key security)
+├── .gitignore          # Version control filters
+└── requirements.txt    # Project dependencies
 ```
 
-* O fator de densidade é calibrado experimentalmente usando uma balança de precisão.
+---
 
-### 4️⃣ Validação e Interface
+## 🔄 Data Flow
 
-* Avaliação com métricas:
+```
+Upload Image
+     │
+     ▼
+Preprocessing (OpenCV)
+Resize + Normalize
+     │
+     ▼
+YOLO Inference (models/best.pt)
+Instance Segmentation
+     │
+     ▼
+Business Logic (detector.py × data/dados.json)
+Consumable Food vs. Waste Classification
+     │
+     ▼
+Dashboard (Streamlit)
+Dynamic Charts + Automated Insights
+```
 
-  * **mAP (Mean Average Precision)**
-  * **IoU (Intersection over Union)**
-* Demonstração em tempo real via webcam.
+1. **Input** — User uploads a plate image via Streamlit.
+2. **Preprocessing** — Image is resized and normalized with OpenCV for model compatibility.
+3. **Inference** — YOLO model (loaded from `models/best.pt`) detects objects and confidence scores.
+4. **Business Intelligence** — `detector.py` cross-references detections with `data/dados.json` to classify consumable food vs. waste.
+5. **Visualization** — Results are processed with Pandas and displayed as dynamic charts in the Dashboard, with automatic insights on the most frequently wasted foods.
 
 ---
 
-## 📊 Resultados Esperados
+## 🧠 Technology Stack
 
-Ao final do projeto, o sistema deverá retornar relatórios como:
-
-> *Detectado: 50g de Arroz, 30g de Feijão*
-> *Desperdício Total Estimado: 80g*
-
-Esses dados permitem análises quantitativas e qualitativas do desperdício alimentar.
-
----
-
-
-## 📌 Viabilidade Técnica
-
-* Não requer sensores especializados
-* Pode ser treinado em GPU local ou Google Colab
-* Baseado em tecnologias open-source consolidadas
+| Layer | Technology |
+|---|---|
+| Language | Python 3.10+ |
+| Deep Learning | PyTorch |
+| Computer Vision | OpenCV · Pillow |
+| Model | YOLOv8-seg (Ultralytics) |
+| Data Annotation | Roboflow / CVAT |
+| Data Processing | Pandas · NumPy |
+| Interface | Streamlit |
+| Backend (optional) | FastAPI |
+| Environment | Linux (Ubuntu / WSL) + CUDA |
 
 ---
 
-## 📚 Contexto Acadêmico
+## 🔬 Methodology
 
-Projeto desenvolvido no contexto de **Engenharia de Software / Inteligência Artificial**, com foco em **Visão Computacional aplicada à Sustentabilidade**.
+### 1. Data Collection & Preprocessing
+- Collection of real images of plates/trays post-consumption.
+- **Data Augmentation** applied: rotation, brightness, contrast adjustments.
+
+### 2. Model Training
+- **Transfer Learning** using YOLOv8-seg pre-trained weights.
+- Fine-tuning for specific food classes:
+  - Rice · Beans · Meat · Salad
+
+### 3. Waste Estimation
+Pixel-area-to-weight conversion formula:
+
+```
+Weight (g) = Pixel Area × Density Factor (g/pixel)
+```
+
+> The density factor is calibrated experimentally using a precision scale.
+
+### 4. Validation & Interface
+- Evaluation metrics: **mAP (Mean Average Precision)** and **IoU (Intersection over Union)**
+- Real-time demo via webcam.
 
 ---
 
-## 📄 Licença
+## 📊 Expected Output
 
-Este projeto está sob a licença **MIT**.
+After processing, the system generates reports such as:
+
+```
+Detected:  50g of Rice · 30g of Beans
+Total Estimated Waste:  80g
+```
+
+These outputs enable both quantitative and qualitative analysis of food waste patterns over time.
 
 ---
 
-Projeto acadêmico – Visão Computacional aplicada à sustentabilidade 🌱
+## ⚙️ Setup & Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/plate-waste-detector.git
+cd plate-waste-detector
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure environment variables
+cp .env.example .env
+# Edit .env with your API keys if needed
+
+# Run the application
+streamlit run src/app.py
+```
+
+> **GPU recommended:** The model runs on CPU but performs significantly faster with CUDA-enabled hardware. Training is also feasible on [Google Colab](https://colab.research.google.com/).
+
+---
+
+## ✅ Technical Viability
+
+- ✔️ No specialized sensors required — a standard camera is sufficient.
+- ✔️ Trainable on local GPU or Google Colab (free tier).
+- ✔️ Entirely built on consolidated open-source technologies.
+- ✔️ Modular architecture — easy to extend with new food classes or integrate with existing cafeteria systems.
+
+---
+
+## 📚 Academic Context
+
+Project developed in the context of **Software Engineering / Artificial Intelligence**, focused on **Computer Vision applied to Sustainability**. Originally submitted as a hackathon project.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+*Computer Vision applied to sustainability 🌱*
+
+</div>
