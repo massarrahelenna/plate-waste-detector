@@ -1,9 +1,0 @@
-[
-  { "nome": "Arroz", "Retornos": 8 },
-  { "nome": "Vegetais", "Retornos": 7 },
-  { "nome": "Carne", "Retornos": 5 },
-  { "nome": "Peixe", "Retornos": 2 },
-  { "nome": "tomate", "Retornos": 1 },
-  { "nome": "Macarrão", "Retornos": 2 },
-  { "nome": "Batata", "Retornos": 1 }
-]

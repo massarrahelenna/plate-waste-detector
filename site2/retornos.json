@@ -1,9 +1,0 @@
-[
-  { "item": "Arroz", "vendidosSemana": 200, "retornadosSemana": 8 },
-  { "item": "Vegetais", "vendidosSemana": 200, "retornadosSemana": 7 },
-  { "item": "Carne", "vendidosSemana": 200, "retornadosSemana": 5 },
-  { "item": "Peixe", "vendidosSemana": 200, "retornadosSemana": 2 },
-  { "item": "Tomate", "vendidosSemana": 200, "retornadosSemana": 1 },
-  { "item": "Macarrão", "vendidosSemana": 200, "retornadosSemana": 2 },
-  { "item": "Batata", "vendidosSemana": 200, "retornadosSemana": 1 }
-]
