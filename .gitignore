@@ -33,6 +33,10 @@ ENV/
 # YOLOv5 folder (custom)
 yolov5/
 
+runs/
+dataset/**/*.cache
+labels.cache
+
 # PyInstaller
 *.manifest
 *.spec
@@ -74,3 +78,4 @@ Thumbs.db
 
 # Logs
 *.log
+
