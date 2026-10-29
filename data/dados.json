@@ -1,30 +1,114 @@
 {
   "alimentos": {
-    "arroz": {
-      "nome_display": "Arroz",
-      "densidade_g_por_pixel": 0.08,
+    "apple": {
+      "nome_display": "Maçã",
+      "densidade_g_por_pixel": 0.06,
       "unidade": "g",
-      "observacao": "Fator calibrado para porção padrão de bandeja universitária (640x640px)"
+      "observacao": "Fruta inteira"
     },
-    "feijao": {
-      "nome_display": "Feijão",
-      "densidade_g_por_pixel": 0.09,
+    "apple-core": {
+      "nome_display": "Miolo de Maçã",
+      "densidade_g_por_pixel": 0.03,
       "unidade": "g",
-      "observacao": "Inclui caldo"
+      "observacao": "Resíduo — núcleo da maçã"
     },
-    "carne": {
+    "apple-peel": {
+      "nome_display": "Casca de Maçã",
+      "densidade_g_por_pixel": 0.02,
+      "unidade": "g",
+      "observacao": "Resíduo — casca da maçã"
+    },
+    "bone": {
+      "nome_display": "Osso",
+      "densidade_g_por_pixel": 0.15,
+      "unidade": "g",
+      "observacao": "Osso bovino ou de frango"
+    },
+    "bone-fish": {
+      "nome_display": "Espinha de Peixe",
+      "densidade_g_por_pixel": 0.01,
+      "unidade": "g",
+      "observacao": "Espinha de peixe — resíduo"
+    },
+    "bread": {
+      "nome_display": "Pão",
+      "densidade_g_por_pixel": 0.05,
+      "unidade": "g",
+      "observacao": "Pão de forma ou francês"
+    },
+    "egg-shell": {
+      "nome_display": "Casca de Ovo",
+      "densidade_g_por_pixel": 0.02,
+      "unidade": "g",
+      "observacao": "Resíduo — casca de ovo"
+    },
+    "fish": {
+      "nome_display": "Peixe",
+      "densidade_g_por_pixel": 0.10,
+      "unidade": "g",
+      "observacao": "Filé ou peixe inteiro"
+    },
+    "meat": {
       "nome_display": "Carne",
       "densidade_g_por_pixel": 0.12,
       "unidade": "g",
       "observacao": "Média entre carne bovina e frango"
     },
-    "salada": {
-      "nome_display": "Salada",
+    "mussel": {
+      "nome_display": "Mexilhão",
+      "densidade_g_por_pixel": 0.08,
+      "unidade": "g",
+      "observacao": "Mexilhão sem concha"
+    },
+    "mussel-shell": {
+      "nome_display": "Concha de Mexilhão",
+      "densidade_g_por_pixel": 0.03,
+      "unidade": "g",
+      "observacao": "Resíduo — concha de mexilhão"
+    },
+    "noodle": {
+      "nome_display": "Macarrão",
+      "densidade_g_por_pixel": 0.07,
+      "unidade": "g",
+      "observacao": "Macarrão cozido"
+    },
+    "orange": {
+      "nome_display": "Laranja",
+      "densidade_g_por_pixel": 0.06,
+      "unidade": "g",
+      "observacao": "Fruta inteira ou em gomos"
+    },
+    "orange-peel": {
+      "nome_display": "Casca de Laranja",
+      "densidade_g_por_pixel": 0.02,
+      "unidade": "g",
+      "observacao": "Resíduo — casca de laranja"
+    },
+    "potato": {
+      "nome_display": "Batata",
+      "densidade_g_por_pixel": 0.09,
+      "unidade": "g",
+      "observacao": "Batata cozida, frita ou assada"
+    },
+    "rice": {
+      "nome_display": "Arroz",
+      "densidade_g_por_pixel": 0.08,
+      "unidade": "g",
+      "observacao": "Fator calibrado para bandeja universitária 640×640px"
+    },
+    "tomato": {
+      "nome_display": "Tomate",
+      "densidade_g_por_pixel": 0.07,
+      "unidade": "g",
+      "observacao": "Tomate fresco ou cozido"
+    },
+    "vegetable": {
+      "nome_display": "Vegetais",
       "densidade_g_por_pixel": 0.04,
       "unidade": "g",
-      "observacao": "Folhas e legumes crus"
+      "observacao": "Folhas e legumes crus ou cozidos"
     }
   },
-  "versao": "1.0",
-  "observacao_geral": "Fatores experimentais — recalibrar com balança de precisão para maior acurácia"
+  "versao": "2.0",
+  "observacao_geral": "Fatores experimentais — recalibrar com balança de precisão para maior acurácia. Classes mapeadas conforme data.yaml do projeto Roboflow."
 }

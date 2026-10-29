@@ -1,11 +1,14 @@
+import os
 from roboflow import Roboflow
+from dotenv import load_dotenv
 
-# Insira sua chave de API
-rf = Roboflow(api_key="0F8rtF0Q8QsBh7H2d1Jv")
+load_dotenv()
 
-# Acesse o projeto e versão correta
+api_key = os.getenv("ROBOFLOW_API_KEY")
+if not api_key:
+    raise EnvironmentError("ROBOFLOW_API_KEY não encontrada. Configure no arquivo .env")
+
+rf = Roboflow(api_key=api_key)
 project = rf.workspace("processamento-de-imagem-aula").project("my-first-project-lzc3k")
 version = project.version(4)
-
-# Baixe o dataset no formato YOLOv5
 dataset = version.download("yolov5")

@@ -59,7 +59,9 @@ pytest_cache/
 
 # Environment variables
 .env
-.env.*
+.env.local
+.env.production
+!.env.example
 
 # VS Code
 .vscode/
